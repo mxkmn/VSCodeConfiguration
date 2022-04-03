@@ -1,6 +1,6 @@
 {   /* https://github.com/mxkmn/VSCodeConfiguration
-    Версия VS Code, для которой производилась настройка: 1.64 (YYYY.MM.DD: 2022.02.05).
-    Категории GIT, Терминал, JavaScript Debugger и TypeScript были проигнорированы - у меня недостаточно понимания что там происходит; параментры, имеющие в названии Goto Location были пропущены - не получилось протестировать все варианты, неясно когда что включается (но в челом там по умолчанию настроено прилично).
+    Версия VS Code, для которой производилась настройка: 1.66.
+    Категории GIT, Терминал, JavaScript Debugger и TypeScript на данный момент проигнорированы - у меня недостаточно понимания что там происходит; параментры, имеющие в названии Goto Location были пропущены - не получилось протестировать все варианты, неясно когда что включается (но в целом там по умолчанию настроено нормально, возможно и не потребуется).
     Расширения Image Preview, .NET Interactive Notebooks не нуждаются в настройке, остальные (установленные у меня) не проверяись полностью из-за громоздкости.
     */
 
@@ -11,7 +11,7 @@
     // "editor.fontLigatures": true, // подключение лигатур из Cascadia Code / Fira Code (<= == === => ~~>)
     // "editor.fontSize": 13, // уменьшение шрифта для согласования со стандартными размерами
     "editor.wordWrap": "on", // перенос строк, если они не влазят на экране (аналогично Alt+Z)
-    "explorer.autoReveal": false, // отключение показа файла слева в проводнике при открытии вкладки с ним
+    // "explorer.autoReveal": false, // отключение показа файла слева в проводнике при открытии вкладки с ним
     "editor.stickyTabStops": true, // 4 пробела эмулируют символ табуляции - не могут быть выделены по отдельности
     // "search.useIgnoreFiles": false, // включение поиска по всем файлам (по умолчанию игнорируются файлы, указанные в .ignore и .gitignore)
     // "files.autoSave": "onWindowChange", // автосохранение при переходе к другому окну
@@ -45,11 +45,11 @@
     "editor.linkedEditing": true, // автоматическое изменение парных параметров (например тегов HTML)
     "editor.smartSelect.selectLeadingAndTrailingWhitespace": false, // отключение выделения пробелов при Smart Select (Shift + Alt + L/R arrows)
 
-    "editor.suggest.preview": true, // показ результата подсказки IntelliSense до её подтверждения
+    "editor.suggest.preview": true, // показывает продолжение ввода, которое получится при нажатии Tab
     "editor.acceptSuggestionOnEnter": "off", // отключение возможности подтверждения подсказки IntelliSense по Enter (только Tab)
     "editor.acceptSuggestionOnCommitCharacter": false, // отключение ввода подсказки IntelliSense при вводе спецсимвола
-    "editor.suggest.localityBonus": true, // подсказывать близкие к курсору слова, а не сортировать подсказки по умолчанию
-    "explorer.experimental.fileNesting.enabled": true, // вложение дочерних файлов, использующихся для работы на более низком уровне, но не изменяющихся программистом (тут понятнее: https://code.visualstudio.com/updates/v1_64#_explorer-file-nesting)
+    "editor.suggestSelection": "recentlyUsed", // предлагать на основе последних использований
+    "editor.suggest.localityBonus": true, // подсказывать близкие к курсору слова
 
     "editor.copyWithSyntaxHighlighting": false, // отключение копирования с подсветкой синтаксиса
     "files.trimFinalNewlines": true, // удалять лишние Enter в конце файла при сохранении
@@ -58,33 +58,42 @@
         "files.trimTrailingWhitespace": false
     },
 
+    "workbench.layoutControl.enabled": false, // отключение кнопок управления макетом редактора
     "debug.onTaskErrors": "showErrors", // открытие вкладки проблем при ошибке компиляции
     "workbench.startupEditor": "readme", // показ readme, если доступно, при открытии папки
-    "window.openFoldersInNewWindow": "on", // открытие нового окна VSCode при открытии папки/рабочей области даже при работе в пустой рабочей области
+    "window.openFoldersInNewWindow": "on", // открытие нового окна VSCode при открытии папки/рабочей области
     "explorer.openEditors.sortOrder": "alphabetical", // включение сортировки открытых редакторов сбоку
-    "timeline.pageOnScroll": true, // динамическая подгрузка изменений временной шкалы при скролле
+    "timeline.pageOnScroll": true, // автоматическая подгрузка изменений временной шкалы при скролле
     "diffEditor.codeLens": false, // отображение использования класса и внутренностей (CodeLens) в редакторе различий
+    "explorer.experimental.fileNesting.enabled": true, // вложение дочерних файлов, использующихся для работы на более низком уровне, но не изменяющихся программистом (тут понятнее: https://code.visualstudio.com/updates/v1_64#_explorer-file-nesting)
 
-    "editor.definitionLinkOpensInPeek": true, // открытие описания фичи без разделения окна при нажатии Ctrl+ЛКМ по участку кода
+    "git.closeDiffOnOperation": true, // закрывать редактор различий при выполнении операции в Git
+    "diffEditor.renderSideBySide": false, // показ различий файлов без разделения экрана
+    "diffEditor.ignoreTrimWhitespace": false, // не указывать в редакторе различий замену пробелов на табы (и наоборот)
+    "editor.definitionLinkOpensInPeek": true, // открытие описания фичи без разделения экрана при нажатии Ctrl+ЛКМ по участку кода
+
     "editor.emptySelectionClipboard": false, // отключение копирования строки при отсутствии выделения (при случайном нажатии)
     "files.autoGuessEncoding": true, // автоопределение кодировки при открытии файла
-    "search.searchEditor.defaultNumberOfContextLines": null, // поиск, открытый в редакторе - сохранение количества строк контекста между строками с результатом поиска
+    "search.searchEditor.defaultNumberOfContextLines": null, // поиск, открытый во вкладке: включение сохранения количества строк контекста
 
     "terminal.integrated.defaultProfile.windows": "Command Prompt", // cmd вместо Powershell в Windows (не знаю зачем)
     "terminal.integrated.confirmOnExit": "hasChildProcesses", // подтверждать выход из VSCode при выполнении задачи в терминале
     "terminal.integrated.rightClickBehavior": "default", // контекстное меню в терминале при нажатии ПКМ
-    "editor.hideCursorInOverviewRuler": true, // скрытие места курсора на ползунке справа
     "debug.showBreakpointsInOverviewRuler": true, // показ точек останова на ползунке справа
-    "debug.showSubSessionsInToolBar": true, // улучшенный вывод дочерних процессов (тут понятнее: https://youtu.be/OK2cdq9HXMw)
-
-    "diffEditor.renderSideBySide": false, // показ различий файлов без разделения экрана
-    "diffEditor.ignoreTrimWhitespace": false, // не указывать разницу в пробелах и табах (тут понятнее: https://youtu.be/mkKZAPrYZxU)
+    "editor.hideCursorInOverviewRuler": true, // скрытие курсора на ползунке справа
+    "debug.showSubSessionsInToolBar": true, // улучшенный вывод дочерних процессов в дебаггере (тут понятнее: https://youtu.be/OK2cdq9HXMw)
 
     "scm.alwaysShowRepositories": true, // отображение репозитория в системе управления версиями
     "git.confirmSync": false, // отключение необходимости подтверждать синхронизацию GIT
+    "git.enableSmartCommit": true, // отключение необходимости подтверждать фиксацию изменений
 
-    "notebook.cellToolbarVisibility": "hover", // проявление панели работы с блоком при наведении, без клика (Notebooks)
-    "notebook.lineNumbers": "on", // показ номера строк в ячейках с кодом (Notebooks)
+    "notebook.cellToolbarVisibility": "hover", // показ панели добавления нового блока Notebook при наведении, без клика
+    "notebook.lineNumbers": "on", // показ номера строк в ячейках с кодом для Notebook
+    "jupyter.askForKernelRestart": false, // не запрашивать проверку при перезагрузке ядра Notebook
+
+    "workbench.editorAssociations": { // привязка расширений к редакторам (сейчас .bin открывается в расширении Hex Editor)
+        "*.bin": "hexEditor.hexedit"
+    },
 
     // добавлено автоматически расширениями для Java, можно удалить в случае неиспользования этого языка
     "redhat.telemetry.enabled": false,
@@ -95,8 +104,9 @@
         "**/.factorypath": true
     },
 
-    // "editor.suggestSelection": "recentlyUsed", // стоит включить если не используется расширение IntelliCode
     // "terminal.integrated.scrollback": 10000, // увеличение количества строк в терминале в 10 раз (удобно при работе с Serial вместе с PlatformIO)
+
+    "editor.inlineSuggest.enabled": true, // автоматически добавляется расширением Github Copilot, но не имеет смысла, поскольку по умолчанию это и так включено. Можно удалить, если расширение не установлено
 
     "": "", // чтоб комментарии не ломались при добавлении новых параметров
 }
