@@ -19,7 +19,8 @@
     "editor.stickyTabStops": true, // 4 пробела (или другая выбранная длина отступа) эмулируют символ табуляции - не могут быть выделены по отдельности
     "editor.copyWithSyntaxHighlighting": false, // отключение копирования с подсветкой синтаксиса в сторонние редакторы
     "window.openFoldersInNewWindow": "on", // открытие нового окна VSCode при открытии папки/рабочей области
-    // "explorer.autoReveal": false, // отключение показа файла слева в проводнике при открытии вкладки с ним
+    // "workbench.startupEditor": "readme", // показ readme, если доступно, при открытии папки (открывается не во временной вкладке, приходится вручную закрывать)
+    // "explorer.autoReveal": false, // отключение выделения файла слева в проводнике при открытии вкладки с ним
     // "search.useIgnoreFiles": false, // включение поиска по всем файлам (по умолчанию игнорируются файлы, указанные в .ignore и .gitignore)
     // "files.autoSave": "onWindowChange", // автосохранение при переходе к другому окну
     // "editor.formatOnPaste": true, // автоформатирование при вставке
@@ -28,6 +29,7 @@
 
     "diffEditor.codeLens": false, // отключение отображения использований кода (CodeLens) в редакторе различий
     "terminal.integrated.defaultProfile.windows": "Command Prompt", // cmd вместо Powershell в Windows
+    "diffEditor.renderSideBySide": false, // показ различий файлов без разделения экрана
 
 /* полезные параметры */
     "security.workspace.trust.enabled": false, // отключение недоверенных рабочих областей
@@ -36,23 +38,27 @@
     "workbench.enableExperiments": false, // отключение A/B тестов экспериментальных фичей
 
     "workbench.layoutControl.enabled": false, // отключение кнопок управления макетом редактора, потому что один раз настрой и забудь
-    "window.experimental.commandCenter": true, // показ строки поиска по файлам в верхней части окна
+    "window.commandCenter": true, // показ строки поиска по файлам в верхней части окна
 
     "window.enableMenuBarMnemonics": false, // отключение перехода к вкладкам меню через alt
     "window.customMenuBarAltFocus": false, // отключение возможности входа в меню при зажатии alt
     "explorer.confirmDragAndDrop": false, // отключение подтверждения перемещения
     "explorer.confirmDelete": false, // отключение подтверждения удаления
 
-    "window.dialogStyle": "custom", // красивые диалоговые окна
     "editor.cursorSmoothCaretAnimation": true, // плавная анимация перемещения курсора
     "editor.cursorBlinking": "smooth", // плавная анимация мигания курсора
     "editor.smoothScrolling": true, // плавная прокрутка по PgUp/PgDn
     "workbench.list.smoothScrolling": true, // плавная прокрутка колесом мыши списков боковой панели
+    "terminal.integrated.smoothScrolling": false, // плавная прокрутка в терминале
+
+    "window.dialogStyle": "custom", // красивые диалоговые окна
+    "window.menuBarVisibility": "visible", // показ меню в полноэкранном режиме
     "editor.guides.bracketPairs": true, // цветная линия-помощник слева между {}
     "editor.renderWhitespace": "boundary", // отрисовка пробелов, кроме единичных
     "editor.scrollBeyondLastLine": false, // отключение прокрутки дальше, чем конец файла
     "editor.scrollPredominantAxis": false, // прокрутка тачпадом лишь по одной оси одновременно
     "editor.renderLineHighlight": "all", // выделение строки, в которой находится курсор, горизонтальными полосами по всей длине
+    "editor.stickyScroll.enabled": true, // залипание строк наверху для показа вложенности
 
     "editor.linkedEditing": true, // автоматическое изменение парных параметров (например тегов HTML)
     "editor.smartSelect.selectLeadingAndTrailingWhitespace": false, // отключение выделения пробелов при Smart Select (Shift + Alt + L/R arrows)
@@ -70,19 +76,20 @@
     },
 
     "debug.onTaskErrors": "showErrors", // открытие вкладки проблем при ошибке компиляции
-    // "workbench.startupEditor": "readme", // показ readme, если доступно, при открытии папки - закомментировал, поскольку он открывается не во временной вкладке, и его приходится вручную закрывать
     "explorer.openEditors.sortOrder": "alphabetical", // включение сортировки открытых редакторов сбоку
     "timeline.pageOnScroll": true, // автоматическая подгрузка более старых изменений во временную шкалу при скролле
     "explorer.fileNesting.enabled": true, // вложение дочерних файлов (тут понятнее: https://code.visualstudio.com/updates/v1_64#_explorer-file-nesting)
+	"workbench.list.defaultFindMode": "filter", // автоматическая фильтрация при поиске в древовидных списках
+    "explorer.incrementalNaming": "smart", // инкрементировать число в названии при создании копии вместо добавления `copy`
 
     "scm.alwaysShowRepositories": true, // отображение репозитория в системе управления версиями
     "git.confirmSync": false, // отключение необходимости подтверждать синхронизацию GIT
     "git.enableSmartCommit": true, // отключение необходимости подтверждать фиксацию изменений
 
-    "git.closeDiffOnOperation": true, // закрывать редактор различий после выполнения операции в Git
-    "diffEditor.renderSideBySide": false, // показ различий файлов без разделения экрана
+    "git.closeDiffOnOperation": true, // закрывать редактор различий после выполнения операции в GIT
     "diffEditor.ignoreTrimWhitespace": false, // не указывать в редакторе различий замену пробелов на табы (и наоборот)
     "editor.definitionLinkOpensInPeek": true, // открытие описания фичи без разделения экрана при нажатии Ctrl+ЛКМ по участку кода
+    "git.mergeEditor": true, // расширенный редактор слияния в Git (в дальнейшем станет true по умолчанию)
 
     "editor.emptySelectionClipboard": false, // отключение копирования строки при отсутствии выделения (при случайном нажатии)
     "files.autoGuessEncoding": true, // автоопределение кодировки при открытии файла
@@ -93,9 +100,8 @@
     "terminal.integrated.rightClickBehavior": "default", // контекстное меню в терминале при нажатии ПКМ
     "debug.showBreakpointsInOverviewRuler": true, // показ точек останова на ползунке справа
     "editor.hideCursorInOverviewRuler": true, // скрытие курсора на ползунке справа
+    "editor.minimap.showSlider": "always", // показывать область просмотра на миникарте без наведения мыши
     "debug.showSubSessionsInToolBar": true, // улучшенный вывод дочерних процессов в дебаггере (тут понятнее: https://youtu.be/OK2cdq9HXMw)
-
-    // "terminal.integrated.scrollback": 10000, // увеличение количества строк в терминале в 10 раз (удобно при работе с Serial вместе с PlatformIO)
 
     "workbench.editorAssociations": { // привязка расширений к типам файлов
         "*.bin": "hexEditor.hexedit" // открытие .bin в расширении Hex Editor
@@ -108,8 +114,12 @@
 
     // настройки для Markdown
     "markdown.experimental.validate.enabled": true, // валидация ссылок на файл или заголовок
-    "markdown.experimental.editor.pasteLinks.enabled": true, // вставка ссылок на файл при копировании из буфера обмена (1)
-    "editor.experimental.pasteActions.enabled": true, // вставка ссылок на файл при копировании из буфера обмена (2)
+    "editor.experimental.pasteActions.enabled": true, // вставка ссылки на файл, если он присутствует в буфере обмена
+    "markdown.experimental.updateLinksOnFileMove.enabled": "prompt", // спрашивать об изменении ссылки при перемещении/переименовании файла
+    "markdown.experimental.updateLinksOnFileMove.enableForDirectories": true, // спрашивать об изменении ссылок при перемещении/переименовании директории
+
+    // настройки для PlatformIO
+    // "terminal.integrated.scrollback": 10000, // увеличение количества строк в терминале в 10 раз (удобно при работе с Serial)
 
     // настройки для Draw.io integration
     "hediet.vscode-drawio.theme": "Kennedy", // выбор стандартной белой темы
@@ -118,9 +128,9 @@
     "editor.inlineSuggest.enabled": true, // добавлено автоматически расширением, но не имеет смысла, поскольку по умолчанию это и так включено. Можно удалить, если расширение не установлено
     "github.copilot.enable": {
         "*": true,
-        "yaml": false,
         "plaintext": true,
         "markdown": false,
+        "yaml": false,
         "rust": true,
         "jsonc": true
     },
@@ -142,6 +152,12 @@
     },
 
     // расширения Image Preview, .NET Interactive Notebooks не нуждаются в настройке
+
+    // не протестировано:
+    "editor.suggest.matchOnWordStartOnly": false, // фильтрация подсказок без игнорирования тех, которые не начинаются с выбранного символа
+    "workbench.experimental.settingsProfiles.enabled": true, // Определяет, следует ли включить предварительную версию функции профилей параметров
+    "git.terminalGitEditor": true, // ввод в GIT при помощи VS Code вместо Vim
+
 
     "": "", // чтоб комментарии не ломались при добавлении новых параметров
 }
